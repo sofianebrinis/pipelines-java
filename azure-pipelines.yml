@@ -23,3 +23,15 @@ steps:
 
 pool:
   vmImage: 'ubuntu-16.04' # other options: 'macOS-10.13', 'vs2017-win2016'
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    goals: 'package'
